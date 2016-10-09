@@ -86,7 +86,6 @@ public final class ChunkMergesort {
 		//Finds number of total chunks in array
 		for (int i = 1 ; i<S.size() ; i++){
 			this.comparisons.add(new Integer[]{S.get(i-1), S.get(i)});
-	System.out.println("Printer 2 " + S.get(i-1) + " " +  S.get(i) );
 			if (S.get(i-1) < S.get(i)){ //part of same chunk
 			}else {	//new chunk
 				c++;
@@ -111,7 +110,7 @@ public final class ChunkMergesort {
 		//Merges right and left chunks 
 		chunky = new Chunks ( (merge(chunky.left(), chunky.right())) ,null);
 
-System.out.println("=== FINAL ChunkMergeSort return with " + chunky.left() + " " + chunky.right);
+//System.out.println("=== FINAL ChunkMergeSort return with " + chunky.left() + " " + chunky.right);
 		return chunky.left();
 	}
 
@@ -152,7 +151,6 @@ System.out.println("=== FINAL ChunkMergeSort return with " + chunky.left() + " "
 		
 		Chunks chunkyDivided = new Chunks(left, right);
 //System.out.println("===Returning from CHUNKDIVIDE with==== " + chunkyDivided.left +" " + chunkyDivided.right + "\n");
-
 		return chunkyDivided; 		
 	}
 
@@ -239,7 +237,13 @@ System.out.println("=== FINAL ChunkMergeSort return with " + chunky.left() + " "
 		long startTime = System.currentTimeMillis();
 
 		ChunkMergesort mergesort = new ChunkMergesort();
-		/* List<Integer> sorted = */ mergesort.chunkMergesort(inputList);
+		List<Integer> sorted = mergesort.chunkMergesort(inputList);
+
+		System.out.println("Sorted Array: ");
+		for (int i : sorted){
+			System.out.print(i + " ");
+		}
+		System.out.print("\n ");
 
 		long endTime = System.currentTimeMillis();
 		double totalTimeSeconds = (endTime - startTime) / 1000.0;
